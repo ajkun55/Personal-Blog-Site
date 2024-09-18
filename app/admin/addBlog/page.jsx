@@ -2,7 +2,7 @@
 import { assets } from "@/Assets/assets";
 import axios from "axios";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Import necessary hooks for routing
 import { toast } from "react-toastify";
 
@@ -101,7 +101,7 @@ function Page() {
   };
 
   return (
-    <>
+    <Suspense fallback={<Fallback />}>
       <form
         onSubmit={onSubmitHandler}
         method="POST"
@@ -171,9 +171,13 @@ function Page() {
         <button type="submit" className="w-40 h-12 mt-8 bg-black text-white">
           {postId ? "Update" : "Add"}
         </button>
-      </form>
-    </>
+      </form>{" "}
+    </Suspense>
   );
 }
 
 export default Page;
+
+function Fallback() {
+  return <>placeholder</>;
+}
