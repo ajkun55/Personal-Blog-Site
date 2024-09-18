@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function BlogItem({ blog }) {
   return (
-    <div className="max-w-[330px] sm:max-w-[300px] bg-white border border-black hover:shadow-[-7px_7px_0_#000000]">
+    <div className="max-w-[330px] sm:w-[300px] min-w-[280px] bg-white border border-black hover:shadow-[-7px_7px_0_#000000]">
       <Link href={`/blogs/${blog._id}`}>
         <Image
           src={blog.image}
